@@ -12,7 +12,7 @@ class DeviceSeeder extends Seeder
      */
     public function run()
     {
-        DB:table('devices')->insert([
+        DB::table('devices')->insert([
             'name' => 'Joe\'s phone',
             'mac' => 'ac:cf:85:ca:f8:72',
             'is_in' => false,
