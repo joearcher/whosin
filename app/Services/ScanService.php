@@ -3,14 +3,15 @@ namespace App\Services;
 
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Carbon\Carbon;
 
 use DB;
 
 class ScanService {
 
     public static function process($result){
-        DB::table('devices')->whereIn('mac', $result)->update(['is_in' => true]);
-        DB::table('devices')->whereNotIn('mac', $result)->update(['is_in' => false]);
+        DB::table('devices')->whereIn('mac', $result)->update(['is_in' => true, 'updated_at' => Carbon::now()]);
+        DB::table('devices')->whereNotIn('mac', $result)->update(['is_in' => false, 'updated_at' => Carbon::now()]);
         return true;
     }
 
