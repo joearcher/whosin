@@ -10,6 +10,6 @@ use App\Device;
 class HomeController extends Controller
 {
     public function index(){
-        return var_dump(Device::all());
+        return view('home')->with(['devices' => Device::all()]);
     }
 }
