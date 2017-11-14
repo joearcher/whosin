@@ -1,7 +1,5 @@
 <?php
 
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +11,4 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 |
 */
 
-Route::get('/', function () {
-    $process = new Process('sudo /usr/bin/arp-scan -l');
-    
-    try {
-        $process->mustRun();
-        $response = (string)$process->getOutput();
-        preg_match_all("/\b[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}\b/su", $response, $matches);
-        print_r($matches[0]);
-    } catch (ProcessFailedException $e) {
-       echo $e->getMessage();
-
-    } 
-});
+Route::get('/', 'HomeController@index');
