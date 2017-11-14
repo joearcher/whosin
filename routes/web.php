@@ -18,9 +18,11 @@ Route::get('/', function () {
     
     try {
         $process->mustRun();
-    
-        echo $process->getOutput();
+        $response = (string)$process->getOutput();
+        preg_match_all("/\b[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}-[[:xdigit:]]{2}\b/su", $response, $matches);
+        print_r($matches[0]);
     } catch (ProcessFailedException $e) {
-        echo $e->getMessage();
+       echo $e->getMessage();
+
     } 
 });
