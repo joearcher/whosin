@@ -5,7 +5,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Carbon\Carbon;
 
-use DB;
+use DB, Log;
 
 class ScanService {
 
@@ -28,7 +28,8 @@ class ScanService {
             return $macs;
             
         } catch (ProcessFailedException $e) {
-            echo $e->getMessage();
+
+            Lo::info($e->getMessage());
     
         } 
     }
