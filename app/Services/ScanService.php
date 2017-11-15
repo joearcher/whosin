@@ -10,6 +10,7 @@ use DB, Log;
 class ScanService {
 
     public static function process($result){
+        Log::notice('results', $result);
         DB::table('devices')->whereIn('mac', $result)->update(['is_in' => true, 'updated_at' => Carbon::now()]);
         DB::table('devices')->whereNotIn('mac', $result)->update(['is_in' => false, 'updated_at' => Carbon::now()]);
         return true;
