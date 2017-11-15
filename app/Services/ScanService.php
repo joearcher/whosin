@@ -17,7 +17,7 @@ class ScanService {
     }
 
     public static function doScan(){
-        $process = new Process('sudo /usr/bin/arp-scan -l -q -t 1000 | egrep -ho "[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}"
+        $process = new Process('sudo /usr/bin/arp-scan -l -q -t 1500 | egrep -ho "[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}:[[:xdigit:]]{2}"
         ');
             
         try {
